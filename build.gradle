@@ -18,31 +18,31 @@ version = '2.7.2'
 applicationName = 'Logisim'
 description = 'Logisim: Logic Simulator'
 
-task wrapper(type: Wrapper) {
+wrapper {
     gradleVersion = '5.2'
 }
 
 jar {
     manifest {
         attributes 'Implementation-Title': applicationName,
-                   'Implementation-Version': version,
-         		   'Main-Class': mainClassName
+                'Implementation-Version': version,
+                'Main-Class': mainClassName
     }
     // create a fat jar
     from {
-              configurations.compile.collect {
-                  it.isDirectory() ? it : zipTree(it)
-              }
-              configurations.runtime.collect {
-                  it.isDirectory() ? it : zipTree(it)
-              }
-          }
+        configurations.compile.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+        configurations.runtime.collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    }
 }
 
 launch4j {
     // launch4j should know this from the application plugin, right?
     mainClassName = project.mainClassName
-    jar = "lib/"+project.name+"-"+project.version+".jar"
+    jar = "lib/" + project.name + "-" + project.version + ".jar"
     icon = '../resources/main/logisim/logisim icon.ico'
 }
 
@@ -54,11 +54,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath \
-        'edu.sc.seis.gradle:launch4j:1.0.6',
-        'net.sourceforge.nekohtml:nekohtml:1.9.18',
-        'javax.help:javahelp:2.0.05',
-        'edu.sc.seis.gradle:macappbundle:2.0.0',
+        classpath  \
+         'edu.sc.seis.gradle:launch4j:1.0.6' ,
+        'net.sourceforge.nekohtml:nekohtml:1.9.18' ,
+        'javax.help:javahelp:2.0.05' ,
+        'edu.sc.seis.gradle:macappbundle:2.0.0' ,
         'net.sf.proguard:proguard-gradle:5.2'
     }
 }
@@ -68,22 +68,22 @@ repositories {
 }
 
 dependencies {
-    compile \
-    'javax.help:javahelp:2.0.05',
-    'net.sourceforge.collections:collections-generic:4.01',
-    'org.apache.xmlgraphics:batik-svggen:1.7',
-    'org.apache.xmlgraphics:batik-swing:1.7',
+    compile  \
+     'javax.help:javahelp:2.0.05' ,
+    'net.sourceforge.collections:collections-generic:4.01' ,
+    'org.apache.xmlgraphics:batik-svggen:1.7' ,
+    'org.apache.xmlgraphics:batik-swing:1.7' ,
 
     // Native JDK logger (java.util.logging)
     //'org.slf4j:slf4j-jdk14:1.7.5',
 
     // Simplified logger (less lines)
-    'org.slf4j:slf4j-simple:1.6.1',
+    'org.slf4j:slf4j-simple:1.6.1' ,
 
     // Logging does nothing (use for release builds)
     //'org.slf4j:slf4j-nop:1.7.5',
 
-	'com.itextpdf:itextpdf:5.5.0',
+    'com.itextpdf:itextpdf:5.5.0' ,
 
     // Local dependencies convention: ./libs/*.jar
     fileTree(dir: 'libs', include: '*.jar')
