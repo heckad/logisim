@@ -3,26 +3,19 @@
 
 package com.cburch.logisim.gui.log;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Enumeration;
-import java.util.List;
-
-import javax.swing.JLabel;
-import javax.swing.JTree;
-import javax.swing.tree.DefaultTreeCellRenderer;
-import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.TreeNode;
-import javax.swing.tree.TreePath;
-
 import com.cburch.logisim.circuit.CircuitEvent;
 import com.cburch.logisim.circuit.CircuitListener;
 import com.cburch.logisim.circuit.CircuitState;
 import com.cburch.logisim.circuit.SubcircuitFactory;
 import com.cburch.logisim.comp.Component;
 import com.cburch.logisim.instance.StdAttr;
+
+import javax.swing.*;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
+import javax.swing.tree.TreePath;
+import java.util.*;
 
 @SuppressWarnings("serial")
 class ComponentSelector extends JTree {
@@ -322,7 +315,7 @@ class ComponentSelector extends JTree {
         }
 
         @Override
-        public Enumeration<?> children() {
+        public Enumeration<? extends TreeNode> children() {
             return Collections.enumeration(Collections.emptySet());
         }
     }

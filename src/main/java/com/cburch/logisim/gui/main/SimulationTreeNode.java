@@ -3,11 +3,10 @@
 
 package com.cburch.logisim.gui.main;
 
-import java.util.Enumeration;
+import com.cburch.logisim.comp.ComponentFactory;
 
 import javax.swing.tree.TreeNode;
-
-import com.cburch.logisim.comp.ComponentFactory;
+import java.util.Enumeration;
 
 public abstract class SimulationTreeNode implements TreeNode {
     public abstract ComponentFactory getComponentFactory();
@@ -16,7 +15,7 @@ public abstract class SimulationTreeNode implements TreeNode {
     }
 
     @Override
-    public abstract Enumeration<?> children();
+    public abstract Enumeration<? extends TreeNode> children();
     @Override
     public abstract boolean getAllowsChildren();
     @Override

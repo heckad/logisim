@@ -19,8 +19,11 @@ applicationName = 'Logisim'
 description = 'Logisim: Logic Simulator'
 
 wrapper {
-    gradleVersion = '5.2'
+    gradleVersion = '5.4'
 }
+
+sourceCompatibility = '1.11'
+targetCompatibility = '1.11'
 
 jar {
     manifest {
