@@ -1,4 +1,4 @@
-package com.cburch.logisim.SVG;
+package com.heckad.logisim.SVG;
 
 import java.awt.Dimension;
 import java.awt.Graphics;

@@ -27,7 +27,7 @@
 	<key>Java</key>
 	<dict>
 		<key>MainClass</key>
-		<string>com.cburch.logisim.Main</string>
+		<string>com.cburch.logisim.LogisimMain</string>
 		<key>JVMVersion</key>
 		<string>1.5+</string>
 		<key>ClassPath</key>

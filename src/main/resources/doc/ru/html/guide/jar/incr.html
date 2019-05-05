@@ -7,20 +7,20 @@
 
 <h1>Инкрементатор кода Грея</h1>
 
-<p>Каждый компонент, включенный в библиотеку, объявляется путём создания подкласса <code>InstanceFactory</code>, расположенного в пакете <code>com.cburch.logisim.instance</code>. Этот подкласс содержит весь необходимый код.</p>
+<p>Каждый компонент, включенный в библиотеку, объявляется путём создания подкласса <code>InstanceFactory</code>, расположенного в пакете <code>com.heckad.logisim.instance</code>. Этот подкласс содержит весь необходимый код.</p>
 
 <p>(Здесь мы описываем API текущей версии Logisim. Вы можете найти некоторые библиотеки, разработанные для более ранних версий Logisim, в которых компоненты были разработаны путём объявления двух классов; один - расширяющий <code>Component</code> и другой - расширяющий <code>ComponentFactory</code>. Версия 2.3.0 вводит гораздо более простой API <code>InstanceFactory</code>; старые приёмы являются устаревшими.)</p>
 
 <p>Три пакета Logisim объявляют большинство классов, имеющих отношение к объявлению библиотек компонентов.</p>
 <dl>
 
-<dt><code>com.cburch.logisim.instance</code></dt>
+<dt><code>com.heckad.logisim.instance</code></dt>
 <dd><p>Содержит классы, непосредственно связанные с объявлением компонентов, в том числе классы <code>InstanceFactory</code>, <code>InstanceState</code>, <code>InstancePainter</code>, и <code>Instance</code>.</p></dd>
 
-<dt><code>com.cburch.logisim.data</code></dt>
+<dt><code>com.heckad.logisim.data</code></dt>
 <dd><p>Содержит классы, связанные с элементами данных, связанных с компонентами, такие как класс <code>Bounds</code> для представления ограничивающих прямоугольников или класс <code>Value</code> для представления значений, которые может передавать провод.</p></dd>
 
-<dt><code>com.cburch.logisim.tools</code></dt>
+<dt><code>com.heckad.logisim.tools</code></dt>
 <dd><p>Содержит классы, связанные с объявлением библиотеки.</p></dd>
 
 </dl>
@@ -69,17 +69,17 @@
 <p>Это минимальный пример, иллюстрирующий основные элементы для объявления компонента. Данный компонент - инкрементатор, который принимает многобитное значение на входе и выдаёт следующий код Грея в последовательности.</p>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
-import com.cburch.logisim.data.Attribute;
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Value;
-import com.cburch.logisim.instance.InstanceFactory;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.Port;
-import com.cburch.logisim.instance.StdAttr;
+import com.heckad.logisim.data.Attribute;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Value;
+import com.heckad.logisim.instance.InstanceFactory;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.Port;
+import com.heckad.logisim.instance.StdAttr;
 
 /** Этот компонент принимает многобитное значение на входе и выдаёт значение, следующее за ним
  * в коде Грея. Например, при входном значении 0100 на выходе будет 1100. */

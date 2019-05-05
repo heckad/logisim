@@ -1,5 +1,6 @@
 <html>
-<head><meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Incrementador em código de Gray</title>
 </head>
 <body bgcolor="FFFFFF">
@@ -8,7 +9,7 @@
 
 <p> Cada componente incluído em uma biblioteca é definido através da criação de 
 uma subclasse de <code> InstanceFactory </code> encontrada no pacote
-<code> com.cburch.logisim.instance</code>. Esta subclasse tem todo
+<code> com.heckad.logisim.instance</code>. Esta subclasse tem todo
 o código necessário.
 </p>
 
@@ -27,20 +28,20 @@ bibliotecas de componentes.
 
 <dl>
 
-<dt> <code> com.cburch.logisim.instance </code> </dt>
+<dt> <code> com.heckad.logisim.instance </code> </dt>
 <dd> <p> Contém classes especificamente relacionadas com a definição de componentes,
 incluindo as classes <code> InstanceFactory</code>, <code> InstanceState</code>,
 <code> InstancePainter</code> e <code> Instance</code>.
 </p> </dd>
 
-<dt> <code> com.cburch.logisim.data </code> </dt>
+<dt> <code> com.heckad.logisim.data </code> </dt>
 <dd> <p> Contém classes relacionadas com os elementos de dados associados aos 
 componentes, como a classe <code> Bounds </code> para representar retângulos limítrofes,
 ou a classe <code> Value </code> para representar os valores que possam
 existir em uma conexão. 
 </p> </dd>
 
-<dt> <code> com.cburch.logisim.tools </code> </dt>
+<dt> <code> com.heckad.logisim.tools </code> </dt>
 <dd> <p> Contém classes relacionadas com a definição da biblioteca. 
 </p> </dd>
 
@@ -101,17 +102,17 @@ em sequência.
 </p>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
-import com.cburch.logisim.data.Attribute;
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Value;
-import com.cburch.logisim.instance.InstanceFactory;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.Port;
-import com.cburch.logisim.instance.StdAttr;
+import com.heckad.logisim.data.Attribute;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Value;
+import com.heckad.logisim.instance.InstanceFactory;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.Port;
+import com.heckad.logisim.instance.StdAttr;
 
 /** This component takes a multibit input and outputs the value that follows it
  * in Gray Code. For instance, given input 0100 the output is 1100. */
@@ -125,7 +126,7 @@ class GrayIncrementer extends InstanceFactory {
     /** The constructor configures the factory. */
     GrayIncrementer() {
         super("Gray Code Incrementer");
-        
+
         /* This is how we can set up the attributes for GrayIncrementers. In
          * this case, there is just one attribute - the width - whose default
          * is 4. The StdAttr class defines several commonly occurring
@@ -135,7 +136,7 @@ class GrayIncrementer extends InstanceFactory {
          * and modify them all at once. */
         setAttributes(new Attribute[] { StdAttr.WIDTH },
                 new Object[] { BitWidth.create(4) });
-        
+
         /* The "offset bounds" is the location of the bounding rectangle
          * relative to the mouse location. Here, we're choosing the component to
          * be 30x30, and we're anchoring it relative to its primary output
@@ -143,7 +144,7 @@ class GrayIncrementer extends InstanceFactory {
          * east edge. Thus, the top left corner of the bounding box is 30 pixels
          * west and 15 pixels north of the mouse location. */
         setOffsetBounds(Bounds.create(-30, -15, 30, 30));
-        
+
         /* The ports are locations where wires can be connected to this
          * component. Each port object says where to find the port relative to
          * the component's anchor location, then whether the port is an
@@ -165,11 +166,11 @@ class GrayIncrementer extends InstanceFactory {
         // the setPorts invocation above, the component's input was included at
         // index 0 in the parameter array, so we use 0 as the parameter below.
         Value in = state.getPort(0);
-        
+
         // Now compute the output. We've farmed this out to a helper method,
         // since the same logic is needed for the library's other components.
         Value out = nextGray(in);
-        
+
         // Finally we propagate the output into the circuit. The first parameter
         // is 1 because in our list of ports (configured by invocation of
         // setPorts above) the output is at index 1. The second parameter is the
@@ -188,7 +189,7 @@ class GrayIncrementer extends InstanceFactory {
         painter.drawRectangle(painter.getBounds(), "G+1");
         painter.drawPorts();
     }
-    
+
     /** Computes the next gray value in the sequence after prev. This static
      * method just does some bit twiddling; it doesn't have much to do with
      * Logisim except that it manipulates Value and BitWidth objects. */
@@ -205,13 +206,7 @@ class GrayIncrementer extends InstanceFactory {
             x = x ^ 1;
         } else { // else flip bit just above last 1
             int y = x ^ (x & (x - 1)); // first compute the last 1
-            y = (y << 1) & bits.getMask();
-            x = (y == 0 ? 0 : x ^ y);
-        }
-        return Value.createKnown(bits, x);
-    }
-}
-</pre>
+            y = (y </pre>
 
 <p> Este exemplo, por si só não é suficiente para se criar um arquivo JAR funcional;
 você também deverá prover uma classe Library, conforme ilustrado na página a seguir. 

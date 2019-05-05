@@ -65,7 +65,7 @@ define 'logisim' do
     end
     javahelp()
   }
-  manifest['Main-Class'] = 'com.cburch.logisim.Main'
+  manifest['Main-Class'] = 'com.cburch.logisim.LogisimMain'
   package(:jar)
   package(:jar).enhance { |pkg| pkg.enhance { |pkg| launch4j(pkg) }}
 end

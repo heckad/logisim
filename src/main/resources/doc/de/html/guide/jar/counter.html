@@ -12,24 +12,24 @@
 <h2>GrayCounter</h2>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
 import java.net.URL;
 
 import javax.swing.ImageIcon;
 
-import com.cburch.logisim.data.Attribute;
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Direction;
-import com.cburch.logisim.instance.Instance;
-import com.cburch.logisim.instance.InstanceFactory;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.Port;
-import com.cburch.logisim.instance.StdAttr;
-import com.cburch.logisim.util.GraphicsUtil;
-import com.cburch.logisim.util.StringUtil;
+import com.heckad.logisim.data.Attribute;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Direction;
+import com.heckad.logisim.instance.Instance;
+import com.heckad.logisim.instance.InstanceFactory;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.Port;
+import com.heckad.logisim.instance.StdAttr;
+import com.heckad.logisim.util.GraphicsUtil;
+import com.heckad.logisim.util.StringUtil;
 
 /** Erzeugt einen Zähler, der Gray-Kodes durchläuft. Hier werden
  * mehrere weitere Funktionen gezeigt, die über die Klasse SimpleGrayCounter hinausgehen. */
@@ -108,25 +108,25 @@ class GrayCounter extends InstanceFactory {
 <h2>CounterPoker</h2>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Value;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstancePoker;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.StdAttr;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Value;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstancePoker;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.StdAttr;
 
 /** Wenn der Anwender den Zähler mit dem Schaltwerkzeug anklickt, wird ein CounterPoker-Objekt
  * erzeugt, daß die Benutzerereignisse behandelt. Beachten Sie, daß
  * CounterPoker eine spezifische Klasse von GrayCounter ist, und daß es eine
- * Unterklasse von InstancePoker aus dem  com.cburch.logisim.instance-Paket sein muß. */
+ * Unterklasse von InstancePoker aus dem  com.heckad.logisim.instance-Paket sein muß. */
 public class CounterPoker extends InstancePoker {
     public CounterPoker() { }
 

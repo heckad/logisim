@@ -1,7 +1,7 @@
 /* Copyright (c) 2010, Carl Burch. License information is located in the
  * com.cburch.logisim.Main source code and at www.cburch.com/logisim/. */
 
-package com.cburch.hex;
+package com.heckad.hex;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,9 +9,9 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
-import com.cburch.hex.HexEditor;
-import com.cburch.hex.HexModel;
-import com.cburch.hex.HexModelListener;
+import com.heckad.hex.HexEditor;
+import com.heckad.hex.HexModel;
+import com.heckad.hex.HexModelListener;
 
 /**
  * Tests Hex editor.

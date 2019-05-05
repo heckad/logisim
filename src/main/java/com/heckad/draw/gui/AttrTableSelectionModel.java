@@ -1,0 +1,89 @@
+/* Copyright (c) 2010, Carl Burch. License information is located in the
+ * com.cburch.logisim.LogisimMain source code and at www.cburch.com/logisim/. */
+
+package com.heckad.draw.gui;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import com.heckad.draw.actions.ModelChangeAttributeAction;
+import com.heckad.draw.canvas.Canvas;
+import com.heckad.draw.canvas.Selection;
+import com.heckad.draw.canvas.SelectionEvent;
+import com.heckad.draw.canvas.SelectionListener;
+import com.heckad.draw.model.AttributeMapKey;
+import com.heckad.draw.model.CanvasModel;
+import com.heckad.draw.model.CanvasObject;
+import com.heckad.logisim.data.Attribute;
+import com.heckad.logisim.data.AttributeSet;
+import com.heckad.logisim.gui.generic.AttrTableSetException;
+import com.heckad.logisim.gui.generic.AttributeSetTableModel;
+import static com.heckad.logisim.util.LocaleString.*;
+
+class AttrTableSelectionModel extends AttributeSetTableModel
+        implements SelectionListener {
+    private Canvas canvas;
+
+    public AttrTableSelectionModel(Canvas canvas) {
+        super(new SelectionAttributes(canvas.getSelection()));
+        this.canvas = canvas;
+        canvas.getSelection().addSelectionListener(this);
+    }
+
+    @Override
+    public String getTitle() {
+        Selection sel = canvas.getSelection();
+        Class<? extends CanvasObject> commonClass = null;
+        int commonCount = 0;
+        CanvasObject firstObject = null;
+        int totalCount = 0;
+        for (CanvasObject obj : sel.getSelected()) {
+            if (firstObject == null) {
+                firstObject = obj;
+                commonClass = obj.getClass();
+                commonCount = 1;
+            } else if (obj.getClass() == commonClass) {
+                commonCount++;
+            } else {
+                commonClass = null;
+            }
+            totalCount++;
+        }
+
+        if (firstObject == null) {
+            return null;
+        } else if (commonClass == null) {
+            return getFromLocale("selectionVarious", "" + totalCount);
+        } else if (commonCount == 1) {
+            return getFromLocale("selectionOne", firstObject.getDisplayName());
+        } else {
+            return getFromLocale("selectionMultiple", firstObject.getDisplayName(),
+                    "" + commonCount);
+        }
+    }
+
+    @Override
+    public void setValueRequested(Attribute<Object> attr, Object value)
+            throws AttrTableSetException {
+        SelectionAttributes attrs = (SelectionAttributes) getAttributeSet();
+        Map<AttributeMapKey, Object> oldVals;
+        oldVals = new HashMap<AttributeMapKey, Object>();
+        Map<AttributeMapKey, Object> newVals;
+        newVals = new HashMap<AttributeMapKey, Object>();
+        for (Map.Entry<AttributeSet, CanvasObject> ent : attrs.entries()) {
+            AttributeMapKey key = new AttributeMapKey(attr, ent.getValue());
+            oldVals.put(key, ent.getKey().getValue(attr));
+            newVals.put(key, value);
+        }
+        CanvasModel model = canvas.getModel();
+        canvas.doAction(new ModelChangeAttributeAction(model, oldVals, newVals));
+    }
+
+    //
+    // SelectionListener method
+    //
+    @Override
+    public void selectionChanged(SelectionEvent e) {
+        fireTitleChanged();
+    }
+}

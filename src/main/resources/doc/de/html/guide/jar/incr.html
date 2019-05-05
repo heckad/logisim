@@ -7,20 +7,20 @@
 
 <h1>Gray-Kode-Inkrementierer</h1>
 
-<p>Jedes Bauelement in ein einer Bibliothek wird durch die Erstellung einer Unterklasse von <code>InstanceFactory</code> aus dem <code>com.cburch.logisim.instance</code> Paket definiert. Diese Unterklasse enthält den gesamten, benötigten Kode.</p>
+<p>Jedes Bauelement in ein einer Bibliothek wird durch die Erstellung einer Unterklasse von <code>InstanceFactory</code> aus dem <code>com.heckad.logisim.instance</code> Paket definiert. Diese Unterklasse enthält den gesamten, benötigten Kode.</p>
 
 <p>(An dieser Stelle beschreiben wir die API der aktuellen Version von Logisim. Es gibt Bibliotheken, die für frühere Versionen von Logisim entwickelt wurden, wo Bauelemente durch die Definition von zwei Klassen erstellt wurden: eine Erweiterung von <code>Component</code> und eine Erweiterung von <code>ComponentFactory</code>. Die Version 2.3.0 führte die sehr viel einfachere <code>InstanceFactory</code>-API ein, die andere Methode ist seitdem veraltet.)</p>
 
 <p>Drei Pakete von Logisim definieren die meisten Klassen, die für die Erstellung von Bauelementbibliotheken benötigt werden.</p>
 <dl>
 
-<dt><code>com.cburch.logisim.instance</code></dt>
+<dt><code>com.heckad.logisim.instance</code></dt>
 <dd><p>Enthält Klassen, die speziellen Bezug zur Erstellung von Bauelementen haben, darunter die Klassen <code>InstanceFactory</code>, <code>InstanceState</code>, <code>InstancePainter</code> und <code>Instance</code>.</p></dd>
 
-<dt><code>com.cburch.logisim.data</code></dt>
+<dt><code>com.heckad.logisim.data</code></dt>
 <dd><p>Enthält Klassen zu Datenelementen, die mit den Bauelementen verknüpft sind, wie die Klasse <code>Bounds</code> für begrenzende Rechtecke oder die Klasse  <code>Value</code> für die Werte, die auf einer Leitung existieren können.</p></dd>
 
-<dt><code>com.cburch.logisim.tools</code></dt>
+<dt><code>com.heckad.logisim.tools</code></dt>
 <dd><p>Enthält Klassen zur Definition von Bibliotheken.</p></dd>
 
 </dl>
@@ -62,17 +62,17 @@
 <p>Dies ist ein minimales Beispiel zur Veranschaulichung der wesentlichen Bestandteile der Definition eines Bauelements. Dieses Bauelement ist ein Inkrementierer, das einen Wert von einem Mehrbit-Eingang nimmt und den nächsten Gray-Kode der Sequenz berechnet.</p>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
-import com.cburch.logisim.data.Attribute;
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Value;
-import com.cburch.logisim.instance.InstanceFactory;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.Port;
-import com.cburch.logisim.instance.StdAttr;
+import com.heckad.logisim.data.Attribute;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Value;
+import com.heckad.logisim.instance.InstanceFactory;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.Port;
+import com.heckad.logisim.instance.StdAttr;
 
 /** Dieses Bauelement nimmt einen Mehrbit-Wert und berechnet den darauf folgenden Wert aus
  * im Gray-Kode. Zum Beispiel folgt auf 0100 der Wert 1100. */

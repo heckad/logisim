@@ -14,12 +14,12 @@
 <h2>CounterData</h2>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Value;
-import com.cburch.logisim.instance.InstanceData;
-import com.cburch.logisim.instance.InstanceState;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Value;
+import com.heckad.logisim.instance.InstanceData;
+import com.heckad.logisim.instance.InstanceState;
 
 /** Представляет состояние счетчика. */
 class CounterData implements InstanceData, Cloneable {
@@ -84,17 +84,17 @@ class CounterData implements InstanceData, Cloneable {
 <h2>SimpleCounter</h2>
 
 <pre>
-package com.cburch.gray;
+package com.heckad.gray;
 
-import com.cburch.logisim.data.BitWidth;
-import com.cburch.logisim.data.Bounds;
-import com.cburch.logisim.data.Direction;
-import com.cburch.logisim.instance.InstanceFactory;
-import com.cburch.logisim.instance.InstancePainter;
-import com.cburch.logisim.instance.InstanceState;
-import com.cburch.logisim.instance.Port;
-import com.cburch.logisim.util.GraphicsUtil;
-import com.cburch.logisim.util.StringUtil;
+import com.heckad.logisim.data.BitWidth;
+import com.heckad.logisim.data.Bounds;
+import com.heckad.logisim.data.Direction;
+import com.heckad.logisim.instance.InstanceFactory;
+import com.heckad.logisim.instance.InstancePainter;
+import com.heckad.logisim.instance.InstanceState;
+import com.heckad.logisim.instance.Port;
+import com.heckad.logisim.util.GraphicsUtil;
+import com.heckad.logisim.util.StringUtil;
 
 /** Создаёт простой счётчик, который пробегает по очереди 4-битные коды Грея. Этот
  * пример показывает, как компонент может сохранять своё внутреннее состояние. Весь
