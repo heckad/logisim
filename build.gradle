@@ -19,7 +19,7 @@ applicationName = 'Logisim'
 description = 'Logisim: Logic Simulator'
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.2'
+    gradleVersion = '5.2'
 }
 
 jar {
