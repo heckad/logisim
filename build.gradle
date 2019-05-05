@@ -2,7 +2,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'application'
 apply plugin: 'launch4j'
-apply plugin: 'sonar-runner'
+// apply plugin: 'sonar-runner'
 
 if (System.properties['os.name'].toLowerCase().contains('mac')) {
     apply plugin: 'macAppBundle'
@@ -91,7 +91,7 @@ dependencies {
     testCompile 'junit:junit:4.11'
 }
 
-processResources << {
+processResources {
     println "Processing Java Help..."
     def parser = new org.cyberneko.html.parsers.SAXParser()
     def doc_src = 'src/main/resources/doc'
